@@ -20,8 +20,8 @@ if (isset($_POST['campaign'])) {
     }
 
     // Set the variables
-    $email = $widgetPrivacy == "1" ? (isset($_POST["email"]) ? $_POST["email"] : "") : "";
-    $ip = $widgetPrivacy == "1" ? $_SERVER['REMOTE_ADDR'] : "";
+    $email = $widgetPrivacy == "" && isset($_POST["email"]) ? $_POST["email"] : "";
+    $ip = $widgetPrivacy == "" ? $_SERVER['REMOTE_ADDR'] : "";
 
 
     $stmt = $conn->prepare("INSERT INTO responses (campaignId, email, message, rate, ip, created) VALUES (?, ?, ?, ?, ?, NOW())");
