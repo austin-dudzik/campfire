@@ -62,7 +62,7 @@ include "../functions/pages/delete.php";
                                                         onclick="$(this).addClass('disabled').addClass('btn-loading');">
                                                     <i class="fe fe-trash mr-2"></i> Delete campaign
                                                 </button>
-                                                <a href="<?php echo $url ?>/campaign/<?php echo $_GET["campaign"]; ?>/export"
+                                                <a href="<?= $url . '/campaign/' . $_GET["campaign"] . '/export' ?>"
                                                    class="btn btn-gray pl-4 pr-4"
                                                    onclick="$(this).addClass('disabled').addClass('btn-loading');">
                                                     <i class="fe fe-download mr-2"></i> Export
