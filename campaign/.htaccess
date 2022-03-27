@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9]+)$ index.php?campaign=$1
+RewriteRule ^([a-zA-Z0-9]+)/$ index.php?campaign=$1
+
+RewriteRule ^([a-zA-Z0-9]+)/editor$ edit.php?campaign=$1
+RewriteRule ^([a-zA-Z0-9]+)/editor/view$ editor.php?campaign=$1
+RewriteRule ^([a-zA-Z0-9]+)/responses$ responses.php?campaign=$1
+RewriteRule ^([a-zA-Z0-9]+)/integrations$ integrations.php?campaign=$1
+RewriteRule ^([a-zA-Z0-9]+)/privacy$ privacy.php?campaign=$1
+RewriteRule ^([a-zA-Z0-9]+)/data$ data.php?campaign=$1
+RewriteRule ^([a-zA-Z0-9]+)/delete$ delete.php?campaign=$1
