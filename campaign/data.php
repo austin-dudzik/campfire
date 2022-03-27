@@ -1,15 +1,13 @@
 <?php
 // Set the page name
 $page = "data";
-// Include the config file
-include "../functions/config.php";
-// Include the functions file
-include "../functions/pages/data.php";
-// Include the init file
-include "../functions/init.php";
+// Require the init file
+require_once "../functions/init.php";
+// Require the functions file
+require_once "../functions/pages/data.php";
 // Redirect if not logged in
 if (!logged_in()) {
-    header("Location:../../login");
+    redirect("../../login");
 }
 ?>
 <!doctype html>
@@ -33,7 +31,7 @@ if (!logged_in()) {
                         <i class="fe fe-layout" id="loadSwitch"></i>
                      </div>
                      <h2 class="page-title">
-                        <span><?php echo htmlentities($widgetName, ENT_QUOTES, 'UTF-8'); ?></span>
+                        <span><?= clean($widgetName) ?></span>
                      </h2>
                   </div>
                   <div class="row">
@@ -71,13 +69,13 @@ if (!logged_in()) {
                </div>
             </div>
          </div>
-  <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="importModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Import Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <h5 class="modal-title">Import Data</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
         </button>
       </div>
       <div class="modal-body">
@@ -90,10 +88,11 @@ if (!logged_in()) {
               </div>
           </div>
       <div class="text-center">
-        <button type="submit" name="uploadImport" class="btn btn-gray w-75 mt-3 mb-3" value="1"><i class="fe fe-upload mr-2"></i> Upload CSV</button>
+        <button type="submit" name="uploadImport" class="btn btn-gray w-75 mt-3 mb-3" value="1">
+            <i class="fe fe-upload mr-2"></i> Upload CSV</button>
+        </form>
       </div>
       </div>
-      </form>
     </div>
   </div>
 </div>
