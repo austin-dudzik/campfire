@@ -49,34 +49,34 @@ if (!logged_in()) {
                          <div class="card-body pb-0">
                            <div class="form-group">
                               <label>Campaign Name</label>
-                              <input type="text" class="form-control" name="name" value="<?php echo htmlentities(stripslashes($widgetName), ENT_QUOTES, 'UTF-8'); ?>" required>
+                              <input type="text" class="form-control" name="name" value="<?= clean($widgetName) ?>" required>
                               <small class="form-text text-muted mt-2">
                               Only used for when you need to identify this campaign.
                               </small>
                            </div>
                              <div class="form-group">
                                <label>Accent color</label>
-                               <input class="form-control jscolor {onFineChange:'update(this)',hash:true}" name="accent" value="<?php echo htmlentities(stripslashes($widgetAccent), ENT_QUOTES, 'UTF-8'); ?>">
+                               <input class="form-control jscolor {onFineChange:'update(this)',hash:true}" name="accent" value="<?= clean($widgetAccent) ?>">
                              </div>
                              <div class="form-group">
                                <label>Position</label>
                                <select class="form-control" name="position">
-                                 <option value="1" <?php if ($widgetPosition == "1") { echo "selected"; } ?>>Left</option>
-                                 <option value="" <?php if ($widgetPosition == "") { echo "selected"; } ?>>Right</option>
+                                 <option value="1" <?= $widgetPosition == '1' ? 'selected' : '' ?>>Left</option>
+                                 <option value="" <?= $widgetPosition == '' ? 'selected' : '' ?>>Right</option>
                                </select>
                              </div>
                              <div class="form-group">
                                <label>Widget type</label>
                                <select class="form-control" name="type">
-                                 <option value="" <?php if ($widgetType == "") { echo "selected"; } ?>>Floating</option>
-                                 <option value="1" <?php if ($widgetType == "1") { echo "selected"; } ?>>Sidebar</option>
-                                 <option value="2" <?php if ($widgetType == "2") { echo "selected"; } ?>>Fullscreen</option>
+                                 <option value="" <?= $widgetType == '' ? 'selected' : '' ?>>Floating</option>
+                                 <option value="1" <?= $widgetType == '1' ? 'selected' : '' ?>>Sidebar</option>
+                                 <option value="2" <?= $widgetType == '2' ? 'selected' : '' ?>>Fullscreen</option>
                                </select>
                              </div>
                              <hr>
                              <div class="form-group">
                                 <label class="custom-switch ends_at-toggle" id="emojiToggle">
-                                <input type="checkbox" name="rating" class="custom-switch-input" value="1" <?php if ($widgetRating) { echo "checked"; } ?>>
+                                <input type="checkbox" name="rating" class="custom-switch-input" value="1" <?= $widgetRating == '' ? 'checked' : '' ?>>
                                 <span class="custom-switch-indicator"></span>
                                 <span class="custom-switch-description">Enable ratings</span>
                                 </label>
@@ -96,9 +96,9 @@ if (!logged_in()) {
                              </div>
                              <div class="form-group">
                                 <label>Button text <small class="form-text text-muted d-inline"><a href="#" class="ml-1 text-dark" data-toggle="modal" data-target="#whatIsThisFeedbackBtn">(What's this?)</a></small></label>
-                                <input type="text" class="form-control" name="buttonText" value="<?php echo htmlentities(stripslashes($widgetButtonText), ENT_QUOTES, 'UTF-8'); ?>" required>
+                                <input type="text" class="form-control" name="buttonText" value="<?= clean($widgetButtonText) ?>" required>
                              </div>
-                            <input type="text" class="d-none" name="submit" value="<?php echo $_GET["campaign"]; ?>">
+                            <input type="text" class="d-none" name="submit" value="<?= $_GET["campaign"]; ?>">
                          </div>
                        </div>
                      </div>
@@ -120,13 +120,13 @@ if (!logged_in()) {
                                          <div class="lw-logo lw-logo_icon lw-logo_center lw-mb-md iconBlock">
                                             <div class="lw-preview accentApply "><i class="far fa-comment faIcon"></i></div>
                                          </div>
-                                         <input type="text" class="d-none" name="title" id="titleTextarea" value="<?php echo htmlentities(stripslashes($widgetTitle), ENT_QUOTES, 'UTF-8'); ?>" required>
-                                         <div class="lw-title lw-title_lg widgetTitle" placeholder="Enter a title here" id="titleFiller" contenteditable="true"><?php echo htmlentities(stripslashes($widgetTitle), ENT_QUOTES, 'UTF-8'); ?></div>
-                                         <input type="text" class="d-none" name="subtitle" id="subtitleTextarea" value="<?php echo htmlentities(stripslashes($widgetSubtitle), ENT_QUOTES, 'UTF-8'); ?>" required>
-                                         <div class="lw-content lw-mb-sm widgetSubtitle" placeholder="Enter a subtitle here" id="subtitleFiller" contenteditable="true"><?php echo htmlentities(stripslashes($widgetSubtitle), ENT_QUOTES, 'UTF-8'); ?></div>
+                                         <input type="hidden" name="title" id="titleTextarea" value="<?= clean($widgetTitle) ?>" required>
+                                         <div class="lw-title lw-title_lg widgetTitle" placeholder="Enter a title here" id="titleFiller" contenteditable="true"><?= clean($widgetTitle) ?></div>
+                                         <input type="hidden" name="subtitle" id="subtitleTextarea" value="<?= clean($widgetSubtitle) ?>" required>
+                                         <div class="lw-content lw-mb-sm widgetSubtitle" placeholder="Enter a subtitle here" id="subtitleFiller" contenteditable="true"><?= clean($widgetSubtitle) ?></div>
                                        </div>
                                          <div id="response">
-                                           <div id="emojiContainer" <?php if ($widgetRating == "") { echo 'style="display:none"'; } ?>>
+                                           <div id="emojiContainer" <?= $widgetRating == '' ? 'class="d-none"' : '' ?>>
                                             <div class="lw-title lw-title_sm lw-mb-sm rateTitle">Rate your experience</div>
                                             <div class="lw-tags lw-mb-sm emojiContainer">
                                                <div class="lw-tags-item lw-active"><i class="fad fa-grin-hearts"></i></div>
@@ -158,10 +158,10 @@ if (!logged_in()) {
                                <div class="lw-container lw-container_md d-block">
                                   <div class="lw-item d-inline">
                                      <div class="lw-wrap">
-                                       <input type="text" class="d-none" name="tyTitle" id="tyTitleTextarea" value="<?php echo htmlentities(stripslashes($widgetTyTitle), ENT_QUOTES, 'UTF-8'); ?>" required>
-                                       <div class="lw-title lw-title_lg lw-center tyTitle" placeholder="Enter a title here" id="tyTitleFiller" contenteditable="true"><?php echo htmlentities(stripslashes($widgetTyTitle), ENT_QUOTES, 'UTF-8'); ?></div>
-                                       <input type="text" class="d-none" name="tyMessage" id="tySubtitleTextarea" value="<?php echo htmlentities(stripslashes($widgetSubtitle), ENT_QUOTES, 'UTF-8'); ?>" required>
-                                       <div class="lw-content lw-center lw-mb" placeholder="Enter a message here" id="tySubtitleFiller" contenteditable="true"><?php echo htmlentities(stripslashes($widgetTyMessage), ENT_QUOTES, 'UTF-8'); ?></div>
+                                       <input type="text" class="d-none" name="tyTitle" id="tyTitleTextarea" value="<?= clean($widgetTyTitle) ?>" required>
+                                       <div class="lw-title lw-title_lg lw-center tyTitle" placeholder="Enter a title here" id="tyTitleFiller" contenteditable="true"><?= clean($widgetTyTitle) ?></div>
+                                       <input type="text" class="d-none" name="tyMessage" id="tySubtitleTextarea" value="<?= clean($widgetSubtitle) ?>" required>
+                                       <div class="lw-content lw-center lw-mb" placeholder="Enter a message here" id="tySubtitleFiller" contenteditable="true"><?= clean($widgetTyMessage) ?></div>
                                      </div>
                                   </div>
                                </div>
