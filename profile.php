@@ -32,17 +32,10 @@ require_once "functions/pages/profile.php";
                   <div class="row">
                      <div class="col-lg-4">
                         <div class="card card-profile">
-                           <div class="card-body text-center">
+                           <div class="card-body p-6">
                               <img class="avatar avatar-lg text-white" src="https://www.gravatar.com/avatar/<?= md5($email); ?>?d=mp">
                               <h3 class="mb-3 mt-4"><?= clean($first_name . ' ' . $last_name) ?></h3>
-                              <p class="mb-4"><?= clean($email) ?></p>
-                           </div>
-                        </div>
-                        <div class="card">
-                           <div class="card-body">
-                              <h5><i class="fas fa-fire-alt mr-2"></i> Thank you for purchasing!</h5>
-                              <p>If you're satisfied with Campfire, we'd appreciate if you left a review on our CodeCanyon page. Thanks!</p>
-                              <a href="https://codecanyon.net/user/_Hexagonal" target="_blank" class="btn btn-success btn-sm btn-block pt-2 pb-2">Envato profile <i class="fe fe-arrow-right ml-2"></i></a>
+                              <p class="mb-0"><?= clean($email) ?></p>
                            </div>
                         </div>
                      </div>
@@ -53,6 +46,11 @@ require_once "functions/pages/profile.php";
                            </div>
                            <div class="card-body">
                               <form method="post">
+                                  <?php if (isset($success)) { ?>
+                                      <div class="alert bg-success text-white"><i class="far fa-check mr-3"></i> <?= $success ?></div>
+                                  <?php } elseif(isset($error)) { ?>
+                                      <div class="alert bg-danger text-white"><i class="far fa-times mr-3"></i> <?= $error ?></div>
+                                  <?php } ?>
                                  <div class="row">
                                     <div class="col-lg-6">
                                        <div class="form-group">
@@ -70,7 +68,6 @@ require_once "functions/pages/profile.php";
                                        <div class="form-group">
                                           <label>Email address</label>
                                           <input type="text" class="form-control mb-2" name="email" value="<?= clean($email) ?>" required>
-                                          <small>Once you make account changes, you will be required to log back in.</small>
                                        </div>
                                     </div>
                                  </div>

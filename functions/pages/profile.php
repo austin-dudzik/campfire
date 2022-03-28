@@ -1,29 +1,44 @@
 <?php
 // If profile form is submitted...
 if (isset($_POST["save"])) {
-    // Disable errors for empty inputs
-    error_reporting(0);
-    // Connect to the database
-    $firstName = $conn->real_escape_string($_POST["first"]);
-    $lastName = $conn->real_escape_string($_POST["last"]);
-    $emailAddress = $conn->real_escape_string($_POST["email"]);
-    $sql = "UPDATE users SET first_name='$firstName', last_name='$lastName', email='$emailAddress' WHERE email='$email'";
-    if ($conn->query($sql) === TRUE) {
-        header("Location:logout.php");
+
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? AND id != ? LIMIT 1");
+    $stmt->bind_param('si', $_POST["email"], $user_id);
+    $stmt->execute();
+
+    if ($stmt->get_result()->num_rows == 0) {
+
+        // Close the previous connection
+        $stmt->close();
+        // Update the user
+        $stmt = $conn->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ? LIMIT 1");
+        $stmt->bind_param('sssi', $_POST['first'], $_POST['last'], $_POST['email'], $user_id);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            $success = "Successfully updated user!";
+        } else {
+            $error = "Sorry, an error has occurred: " . " " . $conn->error;
+        }
+
+    } else {
+        $error = "Email already exists!";
     }
-    // Close the connection
-    $conn->close();
+
 }
 // If password form is submitted...
 if (isset($_POST["changePassword"])) {
-    // Connect to the database
-    // Disable errors for empty inputs
-    error_reporting(0);
-    $newPassword = $conn->real_escape_string(password_hash($_POST["newPassword"], PASSWORD_BCRYPT));
-    $sql = "UPDATE users SET password='$newPassword' WHERE email='$email'";
-    if ($conn->query($sql) === TRUE) {
-        header("Location:logout.php");
+
+    // Update the password
+    $password = escape(password_hash($_POST["newPassword"], PASSWORD_BCRYPT));
+    $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ? LIMIT 1");
+    $stmt->bind_param('si', $password, $user_id);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        redirect("logout");
+    } else {
+        $error = "Sorry, an error has occurred: " . " " . $conn->error;
     }
-    // Close the connection
-    $conn->close();
+
 }
