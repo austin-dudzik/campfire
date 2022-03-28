@@ -131,15 +131,10 @@ if (isset($_POST["submit"])) {
          <div class="page-main">
             <div class="header py-4">
                <div class="container">
-                  <div class="d-flex">
-                     <a class="header-brand" href="">
+                  <div class="d-flex justify-content-center">
+                     <div class="header-brand">
                      <img src="assets/images/logo.svg" class="header-brand-img mr-2" alt="Campfire logo">
                      <span class="hidden-sm-down">Campfire</span>
-                     </a>
-                     <div class="d-flex order-lg-2 ml-auto">
-                        <div class="nav-item d-none d-md-flex">
-                           <a href="https://campfire-docs.hexagonal.agency/installation" target="_blank" class="btn btn-sm pl-4 pr-4  pt-2 pb-2 bg-camp"><i class="fal fa-book mr-2"></i> Documentation</a>
-                        </div>
                      </div>
                   </div>
                </div>
@@ -147,23 +142,13 @@ if (isset($_POST["submit"])) {
             <div class="my-3 my-md-5">
                <div class="container">
                   <div class="row">
-                     <div class="col-lg-10 order-md-1">
+                      <div class="col"></div>
+                     <div class="col-lg-9">
                         <div class="row">
                            <div class="col-12">
                               <div class="card">
-                                 <div class="card-body">
-                                    <h4>Welcome to Campfire</h4>
-                                    <p>Thank you for purchasing. This page will take you through the necessary steps to installing Campfire on your server.</p>
-                                    <a href="https://campfire-docs.hexagonal.agency/installation" target="_blank" class="btn btn-sm mr-1 pl-4 pr-4 pt-2 pb-2 btn-dark"><i class="fal fa-envelope mr-2"></i> Contact us</a>
-                                    <a href="https://campfire-docs.hexagonal.agency/installation" target="_blank" class="btn btn-sm pl-4 pr-4 pt-2 pb-2 btn-dark"><i class="fal fa-book mr-2"></i> Documentation</a>
-                                 </div>
-                              </div>
-                              <div class="card">
                                  <div class="card-header">
-                                    <h3 class="card-title"><i class="fe fe-edit-2 mr-2"></i> Campaign Editor</h3>
-                                    <div class="card-options">
-                                       <a href="mailto:support@hexagonal.agency?subject=Campfire%20support" target="_blank" class="btn bg-camp text-white">Need help?</a>
-                                    </div>
+                                    <h3 class="card-title"><i class="fe fe-database mr-2"></i> Install Campfire</h3>
                                  </div>
                                  <div class="card-body">
                                     <form method="post">
@@ -247,6 +232,7 @@ if (isset($_POST["submit"])) {
                            </div>
                         </div>
                      </div>
+                      <div class="col"></div>
                   </div>
                </div>
             </div>
