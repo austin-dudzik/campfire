@@ -3,8 +3,7 @@
       <div class="row align-items-center flex-row-reverse">
          <div class="col-12 col-lg-auto mt-4 mt-lg-0 float-right">
             <ul class="list-inline list-inline-dots mb-0">
-               <li class="list-inline-item"><a href="https://campfire-docs.hexagonal.agency" target="_blank">Campfire Docs</a></li>
-               <span>&copy; <?= date("Y") ?> Hexagonal, all rights reserved.</span>
+               Campfire v1.3 (Updated: March 28th 2022)
             </ul>
          </div>
       </div>
