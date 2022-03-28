@@ -33,7 +33,7 @@ require_once "functions/pages/profile.php";
                      <div class="col-lg-4">
                         <div class="card card-profile">
                            <div class="card-body text-center">
-                              <img class="avatar avatar-lg text-white" src="https://www.gravatar.com/avatar/<?php echo md5($email); ?>?d=<?php echo $url ?>/assets/images/avatar.png" onerror="this.src='<?php echo $url ?>/assets/images/avatar.png'">
+                              <img class="avatar avatar-lg text-white" src="https://www.gravatar.com/avatar/<?php echo md5($email); ?>?d=mp">
                               <h3 class="mb-3 mt-4"><?= clean($first_name . ' ' . $last_name) ?></h3>
                               <p class="mb-4"><?= clean($email) ?></p>
                            </div>

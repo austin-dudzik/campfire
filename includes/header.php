@@ -11,7 +11,7 @@
             </div>
             <div class="dropdown">
                <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-               <img class="avatar" src="<?= 'https://www.gravatar.com/avatar/' . md5($email) . '?d=' . $url . '/assets/images/avatar.png' ?>" onerror="this.src='<?= $url . '/assets/images/avatar.png' ?>'">
+               <img class="avatar" src="<?= 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mp' ?>">
                <span class="ml-2 d-none d-lg-block">
                     <span class="text-default"><?= clean($first_name) ?></span>
                </span>
