@@ -33,14 +33,14 @@ if($role != 0) {
             <div class="container">
                 <div class="page-header">
                     <h1 class="page-title">
-                        Team Members
+                        <i class="fe fe-users mr-2"></i> Team Members
                     </h1>
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Add Member</h4>
+                                <h4 class="card-title"><i class="fe fe-plus mr-2"></i> Add Member</h4>
                             </div>
                             <div class="card-body pt-1">
                                 <form method="post">
@@ -109,44 +109,64 @@ if($role != 0) {
                             echo '<div class="alert alert-success">' . $success . '</div>';
                         }
                         ?>
+
+                        <?php
+
+                        $sql = "SELECT id, first_name, last_name, CONCAT(first_name, ' ', last_name) name, email, role, owner FROM users ORDER BY first_name, last_name ASC";
+                        $result = $conn->query($sql);
+
+                        ?>
+
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Current Members</h4>
+                                <h4 class="card-title">Active Members (<?= $result->num_rows ?>)</h4>
                             </div>
                             <div class="card-body pt-1">
                                 <div class="row">
 
 <?php
-$sql = "SELECT id, first_name, last_name, CONCAT(first_name, ' ', last_name) name, email, role, owner FROM users";
-$result = $conn->query($sql);
 while ($row = $result->fetch_assoc()) { ?>
-    <div class="col-md-4">
-        <div class="card">
+
+        <div class="col-12">
+        <div class="card mb-3">
             <div class="card-body">
-                <img class="avatar avatar-lg text-white"
-                     src="<?= 'https://www.gravatar.com/avatar/' . md5($row["email"]) . '?d=mp' ?>">
-                <p class="mt-3 m-0">
-                    <span class="font-weight-bold mb-0"><?= $row["name"] ?></span>
-                    <?php if ($row['id'] == $user_id) {
-                        echo '(You)';
-                    } ?>
-                </p>
-                <p class="mb-3"><?= ($row["role"] == 0) ? "Administrator" : "Editor"; ?></p>
-
-                <a href="#"  class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editUserModal-<?= $row["id"] ?>">
-                    <i class="fe fe-edit mr-1"></i>
-                    Edit
-                </a>
-                <?php if ($row['owner'] != 1 || $row['id'] != $user_id) { ?>
-                    <a href="#" class="btn btn-danger btn-sm"><i
-                                class="fe fe-trash mr-1"></i>
-                        Delete</a>
-                <?php } ?>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                    <img class="avatar avatar-lg mr-4"
+                         src="<?= 'https://www.gravatar.com/avatar/' . md5($row["email"]) . '?d=mp' ?>" alt="">
+                    <div>
+                        <p class="mb-0">
+                            <span class="font-weight-bold mb-0"><?= $row["name"] ?></span>
+                            <?= $row['id'] == $user_id ? '(You)' : '' ?>
+                        </p>
+                        <p class="mb-0">
+                            <?php
+                            if($row['role'] == 0 && $row['owner'] == 1) {
+                                echo '<span class="badge badge-warning text-dark"><i class="fe fe-star mr-1"></i> Owner</span>';
+                            } elseif($row['role'] == 0) {
+                                echo '<span class="badge badge-success">Administrator</span>';
+                            } elseif($row['role'] == 1) {
+                                echo '<span class="badge badge-secondary">Editor</span>';
+                            }
+                            ?>
+                        </p>
+                    </div>
+                    </div>
+                <div>
+                    <a href="#" class="btn btn-secondary btn-sm mr-1" data-toggle="modal" data-target="#editUserModal-<?= $row["id"] ?>">
+                        <i class="fe fe-edit-2 mr-1"></i>
+                        Edit
+                    </a>
+                    <?php if ($row['owner'] != 1 || $row['id'] != $user_id) { ?>
+                        <a href="#" class="btn btn-danger btn-sm"><i
+                                    class="fe fe-trash mr-1"></i>
+                            Delete</a>
+                    <?php } ?>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
 
     <div class="modal fade" id="editUserModal-<?= $row["id"] ?>">
         <div class="modal-dialog">
