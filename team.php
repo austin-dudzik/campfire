@@ -150,9 +150,10 @@ while ($row = $result->fetch_assoc()) { ?>
                         Edit
                     </a>
                     <?php if ($row['owner'] != 1 || $row['id'] != $user_id) { ?>
-                        <a href="#" class="btn btn-danger btn-sm"><i
-                                    class="fe fe-trash mr-1"></i>
-                            Delete</a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUserModal-<?= $row["id"] ?>">
+                            <i class="fe fe-trash mr-1"></i>
+                            Delete
+                        </a>
                     <?php } ?>
                 </div>
             </div>
@@ -217,6 +218,28 @@ while ($row = $result->fetch_assoc()) { ?>
                                 value="1"
                                 onclick="$(this).addClass('disabled').addClass('btn-loading');">
                             Save changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="deleteUserModal-<?= $row["id"] ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete user</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this user? They will lose all access to Campfire and won't be able to contribute.</p>
+                    <form method="post">
+                        <input type="hidden" name="user_id" value="<?= $row['id'] ?>">
+                        <button type="submit" class="btn bg-camp w-100" name="deleteUser" value="1" onclick="$(this).addClass('disabled').addClass('btn-loading');">
+                            Confirm
                         </button>
                     </form>
                 </div>

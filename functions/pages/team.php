@@ -67,7 +67,7 @@ if (isset($_POST['editUser'])) {
 if (isset($_POST['deleteUser'])) {
 
     $stmt = $conn->prepare("DELETE FROM users WHERE id = ? LIMIT 1");
-    $stmt->bind_param('s', $_POST["email"]);
+    $stmt->bind_param('s', $_POST["user_id"]);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
