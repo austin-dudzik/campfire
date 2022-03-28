@@ -6,7 +6,6 @@ include "../../functions/init.php";
 if (isset($_POST["submit"])) {
     // Disable errors for empty inputs
     error_reporting(0);
-    // Connect to the database
     $widgetName = escape($_POST["name"]);
     $widgetTitle = escape($_POST["title"]);
     $widgetSubtitle = escape($_POST["subtitle"]);

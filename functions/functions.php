@@ -31,7 +31,6 @@ function validation_errors($error_message): string
             </div>';
 }
 
-
 /**************** Validate user login functions ********************/
 function validate_user_login()
 {
@@ -57,8 +56,7 @@ function validate_user_login()
             }
         }
     }
-} // function
-
+}
 
 /**************** User login functions ********************/
 function login_user($email, $password)
@@ -77,7 +75,6 @@ function login_user($email, $password)
         return false;
     }
 }
-
 
 /**************** Check if user is logged in ********************/
 function logged_in() {
