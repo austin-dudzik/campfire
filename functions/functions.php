@@ -1,11 +1,11 @@
 <?php
 /**************** Helper functions ********************/
-function clean($string)
+function clean($string): string
 {
     return htmlentities($string, ENT_QUOTES, 'UTF-8');
 }
 
-function escape($string)
+function escape($string): string
 {
     global $conn;
     return $conn->real_escape_string($string);
@@ -24,7 +24,7 @@ function display_message()
     }
 }
 
-function validation_errors($error_message)
+function validation_errors($error_message): string
 {
     return '<div class="alert alert-danger bg-red text-white" role="alert">
                 <strong>Error:</strong>' . $error_message . '
@@ -36,8 +36,6 @@ function validation_errors($error_message)
 function validate_user_login()
 {
     $errors = [];
-    $min = 3;
-    $max = 20;
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $email = clean($_POST['email']);
         $password = clean($_POST['password']);
@@ -55,7 +53,7 @@ function validate_user_login()
             if (login_user($email, $password)) {
                 redirect("index.php");
             } else {
-                echo validation_errors("Your credentials are not correct");
+                echo validation_errors("Your credentials are incorrect");
             }
         }
     }
@@ -85,7 +83,6 @@ function login_user($email, $password)
 function logged_in() {
     return isset($_SESSION['email']);
 }
-
 
 function row_count($result) {
     return mysqli_num_rows($result);
