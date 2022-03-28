@@ -63,3 +63,17 @@ if (isset($_POST['editUser'])) {
 
 
 }
+
+if (isset($_POST['deleteUser'])) {
+
+    $stmt = $conn->prepare("DELETE FROM users WHERE id = ? LIMIT 1");
+    $stmt->bind_param('s', $_POST["email"]);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        $success = "Successfully deleted user!";
+    } else {
+        $error = "Sorry, an error has occurred: " . " " . $conn->error;
+    }
+
+}

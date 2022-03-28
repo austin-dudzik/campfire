@@ -16,7 +16,7 @@ require_once "../functions/pages/privacy.php";
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="shortcut icon" href="<?php echo $url ?>/assets/images/logo.png" type="image/png">
+      <link rel="shortcut icon" href="<?= $url ?>/assets/images/logo.png" type="image/png">
       <title>Integrations | Campfire</title>
       <?php include '../includes/styles.php'; ?>
    </head>
@@ -45,11 +45,11 @@ require_once "../functions/pages/privacy.php";
                                     <div class="card-options">
                                     </div>
                                  </div>
-                                 <div class="card-body">
+                                 <div class="card-body pt-1">
                                     <p>Copy the following code and paste it right before the <code>&lt;/body&gt;</code> tag on every page you'd like the widget to display.</p>
                                     <label class="form-label">Copy your code</label>
                                     <div class="textarea-container">
-                                       <textarea id="embed" class="form-control textareaInput" rows="3">
+                                       <textarea id="embed" class="form-control bg-light" rows="3" style="resize: none" readonly>
 &lt;!-- Start Campfire Widget --&gt;
 &lt;script type="text/javascript" src="<?= $url . '/feedback/' . $_GET["campaign"] ?>/widget">&lt;/script&gt;
 &lt;!-- End Campfire --&gt;</textarea>
@@ -68,10 +68,10 @@ require_once "../functions/pages/privacy.php";
                                     <div class="card-options">
                                     </div>
                                  </div>
-                                 <div class="card-body">
+                                 <div class="card-body py-1">
                                     <p>Instead of embedding Campfire on your website, you can supply your users with a standalone page where they can submit feedback.</p>
                                     <div class="textarea-container mb-5">
-                                       <textarea id="pageLink" class="form-control textareaInput mb-3" rows="1"><?= $url . '/feedback/' . $_GET["campaign"] ?></textarea>
+                                       <input id="pageLink" class="form-control mb-3 bg-light" value="<?= $url . '/feedback/' . $_GET["campaign"] ?>" readonly>
                                        <button type="submit" class="btn bg-camp mr-1 copy-page-clipboard" id="copy-page-clipboard" data-clipboard-action="copy" data-clipboard-target="#pageLink">
                                        <i class="fe fe-copy mr-2"></i> Copy URL
                                        </button>

@@ -14,11 +14,11 @@ if (!logged_in()) {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="shortcut icon" href="<?php echo $url ?>/assets/images/logo.png" type="image/png">
+      <link rel="shortcut icon" href="<?= $url ?>/assets/images/logo.png" type="image/png">
       <title>Editor | Campfire</title>
 <?php include '../includes/styles.php'; ?>
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600,700" rel="stylesheet">
-<link rel="stylesheet" media="all" href="<?php echo $url ?>/assets/css/siteFeedback.css">
+<link rel="stylesheet" media="all" href="<?= $url ?>/assets/css/siteFeedback.css">
    </head>
    <body>
       <div class="page">
@@ -28,8 +28,8 @@ if (!logged_in()) {
                 <div class="container">
                    <div class="d-flex">
                      <a href="<?= $url ?>/campaign/<?= $_GET["campaign"]; ?>" class="fas fa-chevron-left text-dark mr-5 text-decoration-none mt-3"></a>
-                      <a class="header-brand" href="<?php echo $url ?>">
-                      <img src="<?php echo $url ?>/assets/images/logo.svg" class="header-brand-img mr-2" alt="Campfire logo">
+                      <a class="header-brand" href="<?= $url ?>">
+                      <img src="<?= $url ?>/assets/images/logo.svg" class="header-brand-img mr-2" alt="Campfire logo">
                       <span class="hidden-sm-down">Campfire</span>
                       </a>
                       <div class="d-flex order-lg-2 ml-auto">
@@ -76,7 +76,7 @@ if (!logged_in()) {
                              <hr>
                              <div class="form-group">
                                 <label class="custom-switch ends_at-toggle" id="emojiToggle">
-                                <input type="checkbox" name="rating" class="custom-switch-input" value="1" <?= $widgetRating == '' ? 'checked' : '' ?>>
+                                <input type="checkbox" name="rating" class="custom-switch-input" value="1" <?= $widgetRating == '' ? '' : 'checked' ?>>
                                 <span class="custom-switch-indicator"></span>
                                 <span class="custom-switch-description">Enable ratings</span>
                                 </label>
@@ -86,7 +86,7 @@ if (!logged_in()) {
                              </div>
                              <div class="form-group">
                                 <label class="custom-switch ends_at-toggle">
-                                <input type="checkbox" name="emailField" class="custom-switch-input" value="1" <?php if ($widgetPrivacy == "1") { echo "disabled"; } else { if ($widgetEmailField) { echo "checked"; } } ?>>
+                                <input type="checkbox" name="emailField" class="custom-switch-input" value="1" <?= $widgetPrivacy == '1' ? 'disabled' : ($widgetEmailField ? 'checked' : '') ?>>
                                 <span class="custom-switch-indicator"></span>
                                 <span class="custom-switch-description">Email field required</span>
                                 </label>
@@ -98,7 +98,7 @@ if (!logged_in()) {
                                 <label>Button text <small class="form-text text-muted d-inline"><a href="#" class="ml-1 text-dark" data-toggle="modal" data-target="#whatIsThisFeedbackBtn">(What's this?)</a></small></label>
                                 <input type="text" class="form-control" name="buttonText" value="<?= clean($widgetButtonText) ?>" required>
                              </div>
-                            <input type="text" class="d-none" name="submit" value="<?= $_GET["campaign"]; ?>">
+                            <input type="hidden" name="submit" value="<?= $_GET["campaign"]; ?>">
                          </div>
                        </div>
                      </div>
@@ -111,10 +111,10 @@ if (!logged_in()) {
                               <a href="#" id="buttonThankyou" class="btn btn-light btn-block"><i class="fas fa-check-circle mr-2"></i> Confirmation</a>
                             </div>
                           </div>
-                            <div class="card pl-0 pr-0 pt-5 pb-6 preview" id="default">
+                            <div class="card pl-0 pr-0 pt-5 pb-6 preview cf-widget" id="default">
                              <div class="lw-widget lw-widget_fullscreen d-block">
                                 <div class="lw-container lw-container_md d-block">
-                                   <div class="lw-item d-inline" style="--theme-color:<?php echo htmlentities(stripslashes($widgetAccent), ENT_QUOTES, 'UTF-8'); ?>">
+                                   <div class="lw-item d-inline" style="--theme-color:<?= clean($widgetAccent) ?>">
                                       <div class="lw-wrap">
                                           <div id="widgetHeader">
                                          <div class="lw-logo lw-logo_icon lw-logo_center lw-mb-md iconBlock">
@@ -153,14 +153,14 @@ if (!logged_in()) {
                                 </div>
                              </div>
                            </div>
-                           <div class="card pl-0 pr-0 pt-5 pb-6" id="thank-you">
+                           <div class="card pl-0 pr-0 pt-5 pb-6 cf-widget" id="thank-you">
                             <div class="lw-widget lw-widget_fullscreen d-block">
                                <div class="lw-container lw-container_md d-block">
                                   <div class="lw-item d-inline">
                                      <div class="lw-wrap">
-                                       <input type="text" class="d-none" name="tyTitle" id="tyTitleTextarea" value="<?= clean($widgetTyTitle) ?>" required>
+                                       <input type="hidden" name="tyTitle" id="tyTitleTextarea" value="<?= clean($widgetTyTitle) ?>" required>
                                        <div class="lw-title lw-title_lg lw-center tyTitle" placeholder="Enter a title here" id="tyTitleFiller" contenteditable="true"><?= clean($widgetTyTitle) ?></div>
-                                       <input type="text" class="d-none" name="tyMessage" id="tySubtitleTextarea" value="<?= clean($widgetSubtitle) ?>" required>
+                                       <input type="hidden" name="tyMessage" id="tySubtitleTextarea" value="<?= clean($widgetSubtitle) ?>" required>
                                        <div class="lw-content lw-center lw-mb" placeholder="Enter a message here" id="tySubtitleFiller" contenteditable="true"><?= clean($widgetTyMessage) ?></div>
                                      </div>
                                   </div>
@@ -183,7 +183,7 @@ if (!logged_in()) {
             </div>
          </div>
          <?php include "../includes/footer.php" ?>
-         <script type="text/javascript" src="<?php echo $url ?>/assets/js/editor.js"></script>
+         <script type="text/javascript" src="<?= $url ?>/assets/js/editor.js"></script>
       </div>
    </body>
 </html>

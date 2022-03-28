@@ -7,7 +7,7 @@
          </a>
          <div class="d-flex order-lg-2 ml-auto">
             <div class="nav-item d-none d-md-flex">
-               <a href="mailto:support@hexagonal.agency?subject=Campfire%20support" target="_blank" class="btn btn-sm pl-4 pr-4 bg-camp">Need help?</a>
+               <a href="#" data-toggle="modal" data-target="#newListModal" id="newListModalBtn" data-backdrop="static" data-keyboard="false" class="btn btn-sm pl-4 pr-4 bg-camp"><i class="fe fe-plus mr-2"></i> New</a>
             </div>
             <div class="dropdown">
                <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
@@ -34,4 +34,26 @@
          </div>
       </div>
    </div>
+</div>
+
+<div class="modal fade" id="newListModal">
+    <div class="modal-dialog modal-dialog-centered modal-s">
+        <div class="modal-content px-3">
+            <div class="modal-header">
+                <h5 class="modal-title">New Campaign</h5>
+                <button type="button" class="close" data-dismiss="modal"></button>
+            </div>
+            <form method="post" action="<?= $url ?>/">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="input">
+                            <input type="text" class="form-control mb-2" name="name" placeholder="Campaign name" aria-label="Campaign name" required>
+                            <small>This is only used internally when you need to identify the campaign.</small>
+                        </div>
+                    </div>
+                    <button type="submit" name="submit" value="1" class="btn bg-camp w-25 btn-block new-list-modal-btn mb-3"><i class="fe fe-check"></i> Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

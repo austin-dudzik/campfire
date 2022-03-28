@@ -8,7 +8,7 @@
       <span class="icon mr-3"><i id="editorClick" class="fe fe-edit-2"></i></span>Editor</a>
 
       <a href="<?= $url . '/campaign/' . $_GET["campaign"] . '/responses' ?>" onclick="loaderInit()" class="list-group-item list-group-item-action <?= $page === "responses" ? 'active' : '' ?>">
-      <span class="icon mr-3"><i class="fe fe-users"></i></span>Responses
+      <span class="icon mr-3"><i class="fe fe-bar-chart-2"></i></span>Responses
       <span class="float-right"><?= $responses ?></span></a>
 
       <a href="<?= $url . '/campaign/' . $_GET["campaign"] . '/integrations' ?>" onclick="loaderInit()" class="list-group-item list-group-item-action <?= $page === "integrations" ? 'active' : '' ?>">

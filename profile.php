@@ -14,7 +14,7 @@ require_once "functions/pages/profile.php";
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="shortcut icon" href="<?php echo $url ?>/assets/images/logo.png" type="image/png">
+      <link rel="shortcut icon" href="<?= $url ?>/assets/images/logo.png" type="image/png">
       <title>Profile | Campfire</title>
        <?php include 'includes/styles.php'; ?>
    </head>
@@ -33,7 +33,7 @@ require_once "functions/pages/profile.php";
                      <div class="col-lg-4">
                         <div class="card card-profile">
                            <div class="card-body text-center">
-                              <img class="avatar avatar-lg text-white" src="https://www.gravatar.com/avatar/<?php echo md5($email); ?>?d=mp">
+                              <img class="avatar avatar-lg text-white" src="https://www.gravatar.com/avatar/<?= md5($email); ?>?d=mp">
                               <h3 class="mb-3 mt-4"><?= clean($first_name . ' ' . $last_name) ?></h3>
                               <p class="mb-4"><?= clean($email) ?></p>
                            </div>

@@ -16,7 +16,7 @@ if (!logged_in()) {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="shortcut icon" href="<?php echo $url ?>/assets/images/logo.png" type="image/png">
+      <link rel="shortcut icon" href="<?= $url ?>/assets/images/logo.png" type="image/png">
       <title>Data Manager | Campfire</title>
 <?php include '../includes/styles.php'; ?>
    </head>
@@ -43,12 +43,12 @@ if (!logged_in()) {
                                  <div class="card-header">
                                     <h3 class="card-title text-dark"><i class="fe fe-database mr-2"></i> Data Manager</h3>
                                  </div>
-                                 <div class="card-body">
+                                 <div class="card-body pt-1">
                                    <?php if (isset($_POST["uploadImport"])) { ?>
                                    <div id="alertSlideSlow" class="alert bg-success text-white"><i class="far fa-check mr-3"></i> Success, feedback responses were imported successfully.</div>
                                    <?php } ?>
                                     <p>In order for you to back up and manage your data, Campfire provides the ability to export your feedback responses as a <strong>.CSV</strong> file. You also have the ability to import data from a previous export.</p>
-                                    <strong>Notice:</strong> There are currently <?php echo $responses ?> rows of feedback data.
+                                    <strong>Notice:</strong> There are currently <?= $responses ?> rows of feedback data.
                                     <div class="mt-5 mb-3">
                                           <button type="button" data-toggle="modal" data-target="#importModal" class="btn btn-gray w-25 mx-1">
                                           <i class="fe fe-upload mr-2"></i> Import data

@@ -21,7 +21,7 @@ if($role != 0) {
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="shortcut icon" href="<?php echo $url ?>/assets/images/logo.png" type="image/png">
+    <link rel="shortcut icon" href="<?= $url ?>/assets/images/logo.png" type="image/png">
     <title>Team | Campfire</title>
     <?php include 'includes/styles.php'; ?>
 </head>
@@ -49,36 +49,28 @@ if($role != 0) {
                                             <div class="form-group">
                                                 <label>First Name</label>
                                                 <input type="text"
-                                                       class="form-control<?php if (empty($_POST['first_name']) && $_POST) {
-                                                           echo ' required"';
-                                                       } ?>" name="first_name" value="" required>
+                                                       class="form-control" name="first_name" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
                                                 <input type="text"
-                                                       class="form-control<?php if (empty($_POST['last_name']) && $_POST) {
-                                                           echo ' required"';
-                                                       } ?>" name="last_name" value="" required>
+                                                       class="form-control" name="last_name" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Email address</label>
                                                 <input type="email"
-                                                       class="form-control<?php if (empty($_POST['email']) && $_POST) {
-                                                           echo ' required"';
-                                                       } ?>" name="email" value="" required>
+                                                       class="form-control" name="email" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Password</label>
                                                 <input type="password"
-                                                       class="form-control<?php if (empty($_POST['password']) && $_POST) {
-                                                           echo ' required"';
-                                                       } ?>" name="password" value="" required>
+                                                       class="form-control" name="password" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -112,7 +104,7 @@ if($role != 0) {
 
                         <?php
 
-                        $sql = "SELECT id, first_name, last_name, CONCAT(first_name, ' ', last_name) name, email, role, owner FROM users ORDER BY first_name, last_name ASC";
+                        $sql = "SELECT id, first_name, last_name, CONCAT(first_name, ' ', last_name) name, email, role, owner FROM users ORDER BY owner DESC, first_name ASC, last_name ASC";
                         $result = $conn->query($sql);
 
                         ?>

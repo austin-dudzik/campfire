@@ -239,7 +239,7 @@ if (isset($_POST["submit"])) {
                                  </div>
                                  <div class="card-footer">
                                  <div class="text-center">
-                                 <button class="btn bg-camp w-50" type="submit" name="submit" value="1" onclick="$('#editCampaign').submit(); $(this).addClass('disabled').addClass('btn-loading');"><i class="fas fa-fire-alt mr-2"></i> Install Campfire</button>
+                                 <button class="btn bg-camp w-50" type="submit" name="submit" value="1" onclick="$('#editCampaign').submit(); $(this).addClass('disabled').addClass('btn-loading');">Install Campfire <i class="fas fa-arrow-right ml-2"></i> </button>
                                  </div>
                                  </div>
                                  </form>

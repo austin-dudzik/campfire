@@ -19,7 +19,7 @@ include "functions/pages/home.php";
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="shortcut icon" href="<?php echo $url ?>/assets/images/logo.png" type="image/png">
+      <link rel="shortcut icon" href="<?= $url ?>/assets/images/logo.png" type="image/png">
       <title>Campaigns | Campfire</title>
 <?php include 'includes/styles.php'; ?>
    </head>
@@ -65,7 +65,7 @@ include "functions/pages/home.php";
                                <?= $row["re_count"] . " " . ($row["re_count"] == "1" ? "response" : "responses") ?>
                               </a>
                               <div class="item-action dropdown campaignDropdown">
-                                 <a href="javascript:void(0)" data-toggle="dropdown" class="icon">
+                                 <a href="#" data-toggle="dropdown" class="icon">
                                      <i class="fe fe-more-horizontal"></i></a>
                                  <div class="dropdown-menu dropdown-menu-right">
                                     <a href="<?= $url . '/campaign/' . $row["id"] . '/integrations' ?>" class="dropdown-item"><i class="dropdown-icon fe fe-code"></i> Integrations</a>
@@ -86,7 +86,7 @@ include "functions/pages/home.php";
 } else { ?>
                      <div class="ml-7 mt-6">
                         <h1 class="font-weight-normal">
-                           📩 Create your first campaign
+                           👈 Create your first campaign
                         </h1>
                         <p class="lead font-weight-normal">
                            Start tracking user feedback by creating a new campaign.<br>
@@ -95,27 +95,6 @@ include "functions/pages/home.php";
                      </div>
                   </div>
                   <?php } ?>
-               </div>
-               <div class="modal fade" id="newListModal">
-                  <div class="modal-dialog modal-dialog-centered modal-s">
-                     <div class="modal-content px-3">
-                        <div class="modal-header">
-                           <h5 class="modal-title">New Campaign</h5>
-                           <button type="button" class="close" data-dismiss="modal"></button>
-                        </div>
-                        <form method="post">
-                           <div class="modal-body">
-                              <div class="form-group">
-                                 <div class="input">
-                                    <input type="text" class="form-control mb-2" name="name" placeholder="Campaign name" aria-label="Campaign name" required>
-                                    <small>This is only used internally when you need to identify the campaign.</small>
-                                 </div>
-                              </div>
-                              <button type="submit" name="submit" class="btn bg-camp w-25 btn-block new-list-modal-btn mb-3"><i class="fe fe-check"></i> Create</button>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
                </div>
             </div>
          </div>

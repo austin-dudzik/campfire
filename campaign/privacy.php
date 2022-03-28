@@ -16,7 +16,7 @@ include "../functions/pages/privacy.php";
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="shortcut icon" href="<?php echo $url ?>/assets/images/logo.png" type="image/png">
+      <link rel="shortcut icon" href="<?= $url ?>/assets/images/logo.png" type="image/png">
       <title>Privacy | Campfire</title>
 <?php include '../includes/styles.php'; ?>
    </head>
@@ -31,7 +31,7 @@ include "../functions/pages/privacy.php";
                         <i class="fe fe-layout" id="loadSwitch"></i>
                      </div>
                      <h2 class="page-title">
-                        <span><?php echo htmlentities($widgetName, ENT_QUOTES, 'UTF-8'); ?></span>
+                        <span><?= clean($widgetName) ?></span>
                      </h2>
                   </div>
                   <div class="row">
@@ -43,7 +43,7 @@ include "../functions/pages/privacy.php";
                                  <div class="card-header">
                                     <h3 class="card-title text-dark"><i class="fe fe-eye mr-2"></i> Privacy</h3>
                                  </div>
-                                 <div class="card-body">
+                                 <div class="card-body pt-1">
                                     <p>Campfire gives you the ability to disable the collection of user-indentifiable data for each campaign. This feature allows all collected feedback to remain anonymous and non-trackable.</p>
                                     <strong>When enabled...</strong>
                                     <ul>
@@ -54,14 +54,8 @@ include "../functions/pages/privacy.php";
                                     <div class="mt-5 mb-3">
                                        <form method="post">
                                           <input type="hidden" name="submit" value="1">
-                                          <button type="submit" name="privacy" value="<?php if (!$widgetPrivacy) {
-    echo "1";
-} ?>" class="btn btn-indigo w-25" onclick="$(this).addClass('disabled').addClass('btn-loading');">
-                                          <?php if (!$widgetPrivacy) {
-    echo '<i class="fe fe-toggle-left mr-2"></i> Enable privacy';
-} else {
-    echo '<i class="fe fe-toggle-right mr-2"></i> Disable privacy';
-} ?>
+                                          <button type="submit" name="privacy" value="<?= !$widgetPrivacy ? 1 : '' ?>" class="btn btn-indigo px-6" onclick="$(this).addClass('disabled').addClass('btn-loading');">
+                                          <?= !$widgetPrivacy ? '<i class="fe fe-toggle-left mr-2"></i> Enable privacy' : '<i class="fe fe-toggle-right mr-2"></i> Disable privacy' ?>
                                           </button>
                                        </form>
                                     </div>
