@@ -52,12 +52,12 @@ if (!logged_in()) {
                                     <p>In order for you to back up and manage your data, Campfire provides the ability to export your feedback responses as a <strong>.CSV</strong> file. You also have the ability to import data from a previous export.</p>
                                     <strong>Notice:</strong> There are currently <?= $responses ?> rows of feedback data.
                                     <div class="mt-5 mb-3">
-                                          <button type="button" data-toggle="modal" data-target="#importModal" class="btn btn-gray w-25 mx-1">
+                                          <button type="button" data-toggle="modal" data-target="#importModal" class="btn btn-gray px-6 mx-1">
                                           <i class="fe fe-upload mr-2"></i> Import data
                                           </button>
                                        <form method="post" class="mb-5 d-inline">
                                           <input type="hidden" name="submit" value="1">
-                                          <button type="submit" class="btn bg-camp w-25 mx-1">
+                                          <button type="submit" class="btn bg-camp px-6 mx-1">
                                           <i class="fe fe-download mr-2"></i> Download data
                                           </button>
                                        </form>
@@ -85,7 +85,7 @@ if (!logged_in()) {
         <form method="post" enctype="multipart/form-data">
           <div class="form-group">
               <div class="custom-file">
-                  <input type="file" class="custom-file-input" name="csv_data" accept=".csv" required>
+                  <input type="file" class="custom-file-input" name="file" accept=".csv" required>
                   <label class="custom-file-label">Choose file</label>
               </div>
           </div>

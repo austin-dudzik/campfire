@@ -19,27 +19,27 @@ if (isset($_POST["submit"])) {
 }
 
 if (isset($_POST["uploadImport"])) {
-    if (pathinfo($_FILES['csv_data']['name'], PATHINFO_EXTENSION) == 'csv') {
-        $arrFileName = explode('.', $_FILES['csv_data']['name']);
-        if ($arrFileName[1] == 'csv') {
-            $handle = fopen($_FILES['csv_data']['tmp_name'], "r");
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $item1 = escape($data[1]);
-                $item2 = escape($data[2]);
-                $item3 = escape($data[3]);
-                $item4 = escape($data[4]);
-                $item5 = escape($data[5]);
+    if (pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION) == 'csv') {
+            $file = fopen($_FILES['file']['tmp_name'], "r");
 
-                $import = "INSERT INTO responses (campaignId, email, message, rate, ip, created) values ('$_GET[campaign]', '$item1', '$item2', '$item3', '$item4', '$item5')";
-                if ($item1 != 'Email' || $item2 != 'Rating' || $item3 != 'Message' || $item4 != 'IP Address' || $item5 != 'Created') {
+            while ($col = fgetcsv($file, 1000) !== FALSE) {
+
+                if ($col[1] != 'Email' || $col[2] != 'Rating' || $col[3] != 'Message' || $col[4] != 'IP Address' || $col[5] != 'Created') {
                     $error = "Import failed. Please check your file and try again.";
                 } else {
-                    query($import);
-                    $success = "Success, feedback responses were imported successfully.";
+                    $stmt = $conn->prepare("INSERT INTO responses (campaignId, email, message, rate, ip, created) VALUES (?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param('ississ', $_GET['campaign'], $col[1], $col[2], $col[3], $col[4], $col[5]);
+                    $stmt->execute();
+
+                    if ($stmt->affected_rows > 0) {
+                        $success = "Success, feedback responses were imported successfully.";
+                    } else {
+                        $error = "Import failed. Please try again.";
+                    }
+
                 }
             }
-            fclose($handle);
-        }
+            fclose($file);
     } else {
         $error = "Import failed. File must be of type .csv";
     }
