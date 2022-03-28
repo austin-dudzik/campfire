@@ -15,9 +15,9 @@ Campfire UI
 }
 
 .bg-camp {
-    background-color: #ff3850 !important;
+    background-color: #ED1F33 !important;
     color: white !important;
-    border-color: #ff3850 !important;
+    border-color: #ED1F33 !important;
 }
 
 .bg-camp:hover {
@@ -25,15 +25,15 @@ Campfire UI
 }
 
 .active {
-    color: #ff3850 !important;
+    color: #ED1F33 !important;
 }
 
 .text-camp {
-    color: #ff3850 !important;
+    color: #ED1F33 !important;
 }
 
 .custom-switch-input:checked ~ .custom-switch-indicator {
-    background: #ff3850 !important
+    background: #ED1F33 !important
 }
 
 :root {
@@ -101,7 +101,7 @@ body {
     color: #495057;
     text-align: left;
     background-color: #f5f7fb;
-    border-top: 2px solid #ff3850;
+    border-top: 2px solid #ED1F33;
 
 }
 
