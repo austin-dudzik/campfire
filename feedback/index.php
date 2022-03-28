@@ -26,8 +26,7 @@ if (isset($_GET["type"]) == "widget") {
     header('Content-Type: application/javascript'); ?>
 /**
   Campfire v1.3 - Website feedback platform
-  (c) 2022 Hexagonal, all rights reserved.
-  Updated: March 26th 2022
+  Updated: March 28th 2022
 */
 
 <?php if ($widgetError == "true") { ?>
