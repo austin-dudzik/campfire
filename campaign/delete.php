@@ -9,6 +9,12 @@ if (!logged_in()) {
 }
 // Include the functions file
 include "../functions/pages/delete.php";
+
+if($role != 0) {
+    redirect($url);
+    die();
+}
+
 ?>
 <!doctype html>
 <html lang="en">

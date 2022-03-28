@@ -71,8 +71,10 @@ include "functions/pages/home.php";
                                     <a href="<?= $url . '/campaign/' . $row["id"] . '/integrations' ?>" class="dropdown-item"><i class="dropdown-icon fe fe-code"></i> Integrations</a>
                                     <a href="<?= $url . '/campaign/' . $row["id"] . '/privacy' ?>" class="dropdown-item"><i class="dropdown-icon fe fe-eye"></i> Privacy</a>
                                     <a href="<?= $url . '/campaign/' . $row["id"] . '/data' ?>" class="dropdown-item"><i class="dropdown-icon fe fe-database"></i> Data Manager</a>
+                                     <?php if($role == 0) { ?>
                                     <div class="dropdown-divider"></div>
                                     <a href="<?= $url . '/campaign/' . $row["id"] . '/delete' ?>" class="dropdown-item text-red"><i class="dropdown-icon fe fe-trash text-red"></i> Delete campaign</a>
+                                     <?php } ?>
                                  </div>
                               </div>
                            </div>

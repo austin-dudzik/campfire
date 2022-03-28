@@ -9,13 +9,15 @@ require_once "functions.php";
 $conn = new mysqli($host, $username, $password, $dbname);
 
 if (isset($_SESSION['email'])) {
-    $sql = "SELECT * FROM users WHERE email='$_SESSION[email]'";
+    $sql = "SELECT id, first_name, last_name, email, role FROM users WHERE email='$_SESSION[email]'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $first_name = $row["first_name"];
-            $last_name = $row["last_name"];
-            $email = $row["email"];
+            $user_id = $row['id'];
+            $first_name = $row['first_name'];
+            $last_name = $row['last_name'];
+            $email = $row['email'];
+            $role = $row['role'];
         }
     }
     if (isset($page)) {

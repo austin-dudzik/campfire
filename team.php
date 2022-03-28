@@ -9,6 +9,11 @@ if (!logged_in()) {
 // Include the functions file
 include "functions/pages/team.php";
 
+if($role != 0) {
+    redirect($url);
+    die();
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -189,8 +194,8 @@ while ($row = $result->fetch_assoc()) { ?>
                                 <div class="form-group">
                                     <label for="editRole">Role</label>
                                     <select class="form-control mb-2" name="role" id="editRole" required>
-                                        <option value="1" <?= $row['role'] == 0 ? 'selected' : '' ?>>Administrator</option>
-                                        <option value="2" <?= $row['role'] == 1 ? 'selected' : '' ?>>Editor</option>
+                                        <option value="0" <?= $row['role'] == 0 ? 'selected' : '' ?>>Administrator</option>
+                                        <option value="1" <?= $row['role'] == 1 ? 'selected' : '' ?>>Editor</option>
                                     </select>
                                 </div>
                             </div>

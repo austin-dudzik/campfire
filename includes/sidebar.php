@@ -20,10 +20,12 @@
       <a href="<?= $url . '/campaign/' . $_GET["campaign"] . '/data' ?>" onclick="loaderInit()" class="list-group-item list-group-item-action <<?= $page === "data" ? 'active' : '' ?>">
       <span class="icon mr-3"><i class="fe fe-database"></i></span>Data Manager</a>
 
+       <?php if($role == 0) { ?>
       <div class="dropdown-divider"></div>
 
       <a href="<?= $url . '/campaign/' . $_GET["campaign"] . '/delete' ?>" onclick="loaderInit()" class="list-group-item list-group-item-action text-red">
       <span class="icon mr-3"><i class="fe fe-trash text-red"></i></span> Delete campaign</a>
+      <?php } ?>
 
    </div>
 </div>

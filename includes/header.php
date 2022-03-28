@@ -20,6 +20,11 @@
                   <a class="dropdown-item" href="<?= $url . '/profile' ?>">
                   <i class="dropdown-icon fe fe-user"></i> Profile
                   </a>
+                   <?php if ($role == 0) { ?>
+                   <a class="dropdown-item" href="<?= $url . '/team' ?>">
+                       <i class="dropdown-icon fe fe-users"></i> Team
+                   </a>
+                   <?php } ?>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="<?= $url . '/logout' ?>">
                   <i class="dropdown-icon fe fe-log-out"></i> Log out

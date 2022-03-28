@@ -2,8 +2,10 @@
 // If profile form is submitted...
 if (isset($_POST["create"])) {
 
+    // Hash the password
     $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
+    // Insert the user into the database
     $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param('ssssi', $_POST["first_name"], $_POST["last_name"], $_POST["email"], $password, $_POST["role"]);
     $stmt->execute();
