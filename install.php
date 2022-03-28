@@ -69,12 +69,12 @@ if (isset($_POST["submit"])) {
      `last_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
      `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
      `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
-     `validation_code` text COLLATE utf8mb4_unicode_ci NOT NULL,
+     `role` int(1) NOT NULL,
      `owner` int(1) NOT NULL
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-   INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `validation_code`, `owner`) VALUES
-   (1, '$first_name', '$last_name', '$email', '$password', '', 1);
+   INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `role`, `owner`) VALUES
+   (1, '$first_name', '$last_name', '$email', '$password', 0, 1);
 
    ALTER TABLE `campaigns`
      ADD PRIMARY KEY (`id`);
